@@ -25,3 +25,15 @@ function showPopup(bool) {
     document.getElementById('popup').style.visibility = 'hidden'
   }
 }
+
+// Initialize project-card tooltips: first card is real, others labeled AI Generated
+document.addEventListener('DOMContentLoaded', function () {
+  var cards = document.querySelectorAll('.project-card');
+  cards.forEach(function (card, idx) {
+    if (idx === 0) {
+      card.setAttribute('data-tooltip', 'This one is real!');
+    } else {
+      card.setAttribute('data-tooltip', 'AI Generated...');
+    }
+  });
+});

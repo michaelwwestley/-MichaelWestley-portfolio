@@ -327,3 +327,47 @@ button:hover {
   text-align: center;
   cursor: pointer;
 }
+
+/* Project card tooltip (shows text on mouseover) */
+.project-card {
+  position: relative;
+}
+.project-card::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: calc(100% + 8px);
+  white-space: nowrap;
+  background: rgba(0,0,0,0.85);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  z-index: 40;
+}
+.project-card:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-4px);
+}
+
+/* Small caret under tooltip */
+.project-card::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 100%;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid rgba(0,0,0,0.85);
+  opacity: 0;
+  transition: opacity 0.18s ease;
+  z-index: 40;
+}
+.project-card:hover::before { opacity: 1 }
